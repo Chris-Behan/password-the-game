@@ -22,14 +22,26 @@
 
 <template id="gameplay">
     <div class="game-container">
-        <h1 id="word">word</h1>
+        <p>The password is:</p>
+        <h1 id="password">word</h1>
+        <button id="new-password-btn">New Password</button>
         <h2 id="timer"></h2>
-        <div id="team-list">
-            <div>Team 1</div>
-            <div>Team 2</div>
-            <div>Team 3</div>
-            <div>Team 4</div>
+        <div>
+            <button id="reset-btn">Reset timer</button>
+            <button id="start-stop-btn">Start timer</button>
         </div>
+        <div id="team-list">
+            <div class="team-container">
+            </div>
+        </div>
+</template>
+
+<template id="team">
+    <div class="team-container">
+        <div id="team-name" class="team-item">Team</div>
+        <div class="team-item">Score:</div>
+        <div id="score" class="team-item">0</div>
+        <button id="correct" class="team-item">Got it!</button>
     </div>
 </template>
 

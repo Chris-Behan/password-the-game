@@ -63,6 +63,16 @@ function intitialize(numTeams, scoreToWin) {
     const gameplayTemplate = document.getElementById("gameplay");
     const gameplayContent = document.importNode(gameplayTemplate.content, true)
     gameContainer.replaceWith(gameplayContent)
+
+    const password = document.getElementById("password");
+    password.innerText = getPassword();
+    const newPasswordBtn = document.getElementById("new-password-btn");
+    newPasswordBtn.onclick = function () {
+        password.innerText = getPassword();
+    }
+
+
+
     const timerBtn = document.getElementById("start-stop-btn")
     const timerDisplay = document.getElementById("timer");
     const timer = new Timer(10, timerBtn, timerDisplay);
@@ -109,19 +119,24 @@ function connectScoreCounter(teamNode, teamNum, scores, scoreToWin) {
     }
 }
 
-function drawScores() {
-
+function drawScores(scores, val) {
+    for (let i = 0; i < scores.length; i++) {
+        const score = scores[i];
+        score.innerText = val
+    }
 }
-
 
 
 function handleWinner(teamNum, scores) {
     // timeout before alerting so that browser has time to render
     // winning score
     setTimeout(() => alert(`Team ${teamNum} wins!`), 10)
-    for (let i = 1; i <= scores.size(); i++) {
+    for (let i = 1; i <= scores.size; i++) {
         scores.set(i, 0)
     }
+    const teamList = document.querySelector("#team-list");
+    const scoreList = teamList.querySelectorAll("#score");
+    drawScores(scoreList, 0);
 }
 
 function createTimerHandler(initial) {
@@ -167,13 +182,20 @@ function stopTimer(timer) {
     clearInterval(timer)
 }
 
-passwords = [
-    "Giraffe",
-    "Flamingo",
-    "Breaking bad",
-    "Miami",
-    "Florida",
-    "Bitcoin",
-    "Tennis",
-    "Mountain",
-]
+function getPassword() {
+    passwords = [
+        "Giraffe",
+        "Flamingo",
+        "Breaking bad",
+        "Miami",
+        "Florida",
+        "Bitcoin",
+        "Tennis",
+        "Mountain",
+    ]
+    // Random integer between 0 and length of passwords
+    const rand = Math.floor(Math.random() * passwords.length);
+    console.log(rand)
+    return passwords[rand];
+}
+

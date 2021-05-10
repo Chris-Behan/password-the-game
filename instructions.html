@@ -9,8 +9,40 @@
 </head>
 
 <body>
-    <h1>Instructions</h1>
-    <script src="script.js"></script>
+    <div id="instruction-container">
+        <h1 id="instructions">Instructions</h1>
+        <p> Password is a cooperative guessing game where teams of two take turns trying to guess a word (the
+            "password") by
+            giving one-word hints to their teammates. </p>
+        <ol>
+            <li>Split into teams of two.</li>
+            <li>Half of the players look at the password (one player from each team).</li>
+            <li>Pick a team to go first and start the timer.</li>
+            <li>Give a one word hint to your teammate and have them guess before the timer runs out.</li>
+            <li>If your teammate guesses incorrectly, it's the next team's turn. Restart the timer.</li>
+            <li>Continue taking turns until someone guesses correctly.</li>
+            <li>If your teammate guesses correctly, click "Got it!".</li>
+            <li>Switch the guessers and knowers after each round.</li>
+            <li>First team to ten wins.</li>
+        </ol>
+
+        <p>
+            Example: Mohammed and Steve are on Team 1 and Pablo and Jessica are on Team 2. In round 1, Mohammed and
+            Pablo
+            are the guessers and Steve and Jessica are the knowers. The knowers, Steve and Jessica, look at the
+            password,
+            which is "Miami". Steve gives a one-word hint ("Scarface") for the password to Mohammed. Mohammed guesses
+            "Tony
+            Montana", he is wrong. Now it is Team 2's turn. Pablo gives Jessica the hint "Vice". Jessica guesses
+            "Miami",
+            she is correct, Team 2 gets a point. For the next turn, Mohammed and Pablo are the knowers and Steve and
+            Jessica
+            are the guessers.
+        </p>
+        <button id="play-btn" class="nav-btn">Play!</button>
+    </div>
+
+    <script src="scripts/instructions.js"></script>
 </body>
 
 </html>

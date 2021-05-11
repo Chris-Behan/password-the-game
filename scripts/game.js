@@ -1,9 +1,8 @@
+import { passwords } from "./passwords.js"
+
 const twoTeams = document.getElementById("two");
 const threeTeams = document.getElementById("three");
 const fourTeams = document.getElementById("four");
-
-let intervalID;
-let numTeams = 0;
 
 twoTeams.onclick = function () {
     start(2);
@@ -51,12 +50,10 @@ class Timer {
 
 }
 
-
 function start(numTeams) {
     const scoreToWin = 10;
-    const scores = intitialize(numTeams, scoreToWin);
+    intitialize(numTeams, scoreToWin);
 }
-
 
 function intitialize(numTeams, scoreToWin) {
     const gameContainer = document.getElementById("game-container");
@@ -71,11 +68,9 @@ function intitialize(numTeams, scoreToWin) {
         password.innerText = getPassword();
     }
 
-
-
     const timerBtn = document.getElementById("start-stop-btn")
     const timerDisplay = document.getElementById("timer");
-    const timer = new Timer(10, timerBtn, timerDisplay);
+    const timer = new Timer(60, timerBtn, timerDisplay);
     timerBtn.onclick = function () {
         if (timer.running) {
             timer.stop();
@@ -105,7 +100,6 @@ function intitialize(numTeams, scoreToWin) {
     return scores;
 }
 
-
 function connectScoreCounter(teamNode, teamNum, scores, scoreToWin) {
     const correctBtn = teamNode.querySelector("#correct");
     let teamScore = teamNode.querySelector("#score");
@@ -126,7 +120,6 @@ function drawScores(scores, val) {
     }
 }
 
-
 function handleWinner(teamNum, scores) {
     // timeout before alerting so that browser has time to render
     // winning score
@@ -139,63 +132,9 @@ function handleWinner(teamNum, scores) {
     drawScores(scoreList, 0);
 }
 
-function createTimerHandler(initial) {
-    let timerRunning = false;
-    let intervalID;
-    let seconds = initial;
-    function handler() {
-        if (timerRunning) {
-            stopTimer(intervalID);
-            timerRunning = false;
-            timerBtn.innerText = "Start Timer"
-        } else {
-            const timerDisplay = document.getElementById("timer");
-            intervalID = setInterval(function () {
-                if (seconds == 0) {
-                    return;
-                }
-                seconds -= 1;
-                timerDisplay.innerText = seconds
-            }, 1000);
-            timerRunning = true;
-            timerBtn.innerText = "Stop Timer"
-        }
-    }
-    return handler;
-}
-
-function startTimer() {
-    const timerDisplay = document.getElementById("timer");
-    const timer = setInterval(function () {
-        if (seconds == 0) {
-            seconds = 10;
-            timerDisplay.innerText = seconds
-            return;
-        }
-        seconds -= 1;
-        timerDisplay.innerText = seconds
-    }, 1000);
-    return timer
-}
-
-function stopTimer(timer) {
-    clearInterval(timer)
-}
-
 function getPassword() {
-    passwords = [
-        "Giraffe",
-        "Flamingo",
-        "Breaking bad",
-        "Miami",
-        "Florida",
-        "Bitcoin",
-        "Tennis",
-        "Mountain",
-    ]
     // Random integer between 0 and length of passwords
     const rand = Math.floor(Math.random() * passwords.length);
-    console.log(rand)
     return passwords[rand];
 }
 

@@ -17,4 +17,3 @@ function capitalizeWords(words) {
     }
     return upperCaseWords
 }
-)

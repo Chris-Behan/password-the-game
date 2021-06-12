@@ -94,21 +94,31 @@ function intitialize(numTeams, scoreToWin) {
         teamNode.querySelector("div").id = `team-${i}`;
         teamNode.querySelector("#team-name").innerText = `Team ${i}`;
         scores.set(i, 0);
-        connectScoreCounter(teamNode, i, scores, scoreToWin)
+        connectScoreCounters(teamNode, i, scores, scoreToWin)
         teamList.append(teamNode);
     }
     return scores;
 }
 
-function connectScoreCounter(teamNode, teamNum, scores, scoreToWin) {
-    const correctBtn = teamNode.querySelector("#correct");
+function connectScoreCounters(teamNode, teamNum, scores, scoreToWin) {
     let teamScore = teamNode.querySelector("#score");
-    correctBtn.onclick = function () {
+
+    const plusBtn = teamNode.querySelector("#plus");
+    plusBtn.onclick = function () {
         const newScore = scores.get(teamNum) + 1;
         scores.set(teamNum, newScore);
         teamScore.innerText = newScore;
         if (newScore == scoreToWin) {
             handleWinner(teamNum, scores);
+        }
+    }
+
+    const minusBtn = teamNode.querySelector("#minus");
+    minusBtn.onclick = function () {
+        if(scores.get(teamNum) > 0){
+            const newScore = scores.get(teamNum) - 1;
+            scores.set(teamNum, newScore);
+            teamScore.innerText = newScore;
         }
     }
 }

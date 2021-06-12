@@ -1,7 +1,7 @@
 body {
     font-family: Open Sans,Arial;
     color: #454545;
-    font-size: 16px;
+    font-size: 20px;
     margin: auto;
     max-width: 800px;
     line-height: 1.4;
@@ -16,6 +16,7 @@ button {
     margin:0 0.3em 0.3em 0;
     border-radius:0.12em;
     box-sizing: border-box;
+    font-size: 20px;
     font-weight:300;
     text-align:center;
     transition: all 0.2s; 
@@ -36,7 +37,8 @@ button:hover{
 
 .nav-btn {
     margin: 1rem;
-    width: 7rem;
+    width: 10rem;
+    white-space: normal;
 }
 
 .game-container {
@@ -72,6 +74,28 @@ button:hover{
 
 .team-item {
     margin: 0.5rem;
+    font-size: 18px;
+}
+
+#title {
+    margin-top: 2rem;
+    margin-bottom: 0
+}
+
+#subtitle {
+    margin: 0;
+}
+
+#the-password-is {
+    margin: 0;
+}
+
+#password {
+    margin: .5em;
+}
+
+#timer {
+    margin: .5em
 }
 
 #instruction-container {
